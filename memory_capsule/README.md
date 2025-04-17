@@ -77,13 +77,13 @@ For offline operation without OpenAI API:
 2. Pull a language model:
 
 ```bash
-ollama pull llama2
+ollama pull llama3.2:1b
 ```
 
 3. Run the memory capsule with the `--use-local-llm` flag and specify the model:
 
 ```bash
-python memory_capsule/run.py --use-local-llm --llm-model llama2
+python memory_capsule/run.py --use-local-llm --llm-model llama3.2:1b
 ```
 
 ## Usage

@@ -33,7 +33,7 @@ def run_all_tests():
     test_suite.addTest(unittest.makeSuite(TestMemorySearchSimplified))
     
     # Run the tests
-    runner = unittest.TextTestRunner(verbosity=2)
+    runner = unittest.TextTestRunner(verbosity=3)
     result = runner.run(test_suite)
     
     # Return the result

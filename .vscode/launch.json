@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run Simplified Tests",
+      "type": "python",
+      "request": "launch",
+      "module": "memory_capsule.tests.simplified.run_all_tests",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    }
+  ]
+}
