@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Capsule - Documentation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Memory Capsule</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="documentation.html">Documentation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Documentation Header -->
+    <header class="py-5 bg-light">
+        <div class="container">
+            <h1 class="display-4">Memory Capsule Documentation</h1>
+            <p class="lead">Comprehensive guides and reference materials for the Memory Capsule project</p>
+        </div>
+    </header>
+
+    <!-- Documentation Content -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <!-- Sidebar Navigation -->
+                <div class="col-lg-3">
+                    <div class="doc-sidebar">
+                        <nav id="navbar-doc" class="navbar flex-column">
+                            <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="#user-guide">User Guide</a>
+                                <a class="nav-link" href="#installation">Installation</a>
+                                <a class="nav-link" href="#configuration">Configuration</a>
+                                <a class="nav-link" href="#commands">Commands</a>
+                                <a class="nav-link" href="#usage-scenarios">Usage Scenarios</a>
+                                <a class="nav-link" href="#api-reference">API Reference</a>
+                                <a class="nav-link" href="#modules">Modules</a>
+                                <a class="nav-link" href="#tutorials">Tutorials</a>
+                                <a class="nav-link" href="#troubleshooting">Troubleshooting</a>
+                                <a class="nav-link" href="#faq">FAQ</a>
+                            </nav>
+                        </nav>
+                    </div>
+                </div>
+                
+                <!-- Main Content -->
+                <div class="col-lg-9 doc-content">
+                    <h2 id="user-guide">User Guide</h2>
+                    <p>Memory Capsule is a powerful system that continuously listens to ambient audio, transcribes and diarizes speech, stores conversations with context, and enables real-time interaction with an AI assistant.</p>
+                    
+                    <p>This guide will help you understand how to use Memory Capsule effectively, from basic setup to advanced features.</p>
+                    
+                    <h3>Overview</h3>
+                    <p>Memory Capsule works by:</p>
+                    <ol>
+                        <li>Continuously recording audio from your microphone</li>
+                        <li>Transcribing speech to text using OpenAI's Whisper</li>
+                        <li>Identifying different speakers through diarization</li>
+                        <li>Storing conversations in a searchable database</li>
+                        <li>Allowing you to search and interact with past conversations</li>
+                    </ol>
+                    
+                    <h2 id="installation">Installation</h2>
+                    <h3>Prerequisites</h3>
+                    <p>Before installing Memory Capsule, ensure you have:</p>
+                    <ul>
+                        <li>Python 3.8 or higher</li>
+                        <li>Anaconda or Miniconda (recommended for environment management)</li>
+                        <li>Microphone for audio input</li>
+                        <li>Speakers for audio output</li>
+                    </ul>
+                    
+                    <h3>Setup with Anaconda</h3>
+                    <p>Follow these steps to install Memory Capsule:</p>
+                    
+                    <div class="code-block">
+                        <pre><code># Clone or download the repository
+git clone https://github.com/yourusername/memory-capsule.git
+cd memory-capsule
+
+# Create a new Anaconda environment
+conda create -n memory-capsule python=3.10
+conda activate memory-capsule
+
+# Install the required dependencies
+pip install -r requirements.txt</code></pre>
+                    </div>
+                    
+                    <h3>OpenAI API Setup (Optional)</h3>
+                    <p>For OpenAI API access, set your API key:</p>
+                    
+                    <div class="code-block">
+                        <pre><code># On Linux/macOS
+export OPENAI_API_KEY=your-api-key-here
+
+# On Windows
+set OPENAI_API_KEY=your-api-key-here</code></pre>
+                    </div>
+                    
+                    <p>Alternatively, create a <code>.env</code> file in the project root with:</p>
+                    
+                    <div class="code-block">
+                        <pre><code>OPENAI_API_KEY=your-api-key-here</code></pre>
+                    </div>
+                    
+                    <h3>Local LLM Setup (Optional)</h3>
+                    <p>For offline operation without OpenAI API:</p>
+                    
+                    <ol>
+                        <li>Install Ollama from <a href="https://ollama.ai/" target="_blank">https://ollama.ai/</a></li>
+                        <li>Pull a language model:
+                            <div class="code-block">
+                                <pre><code>ollama pull llama2</code></pre>
+                            </div>
+                        </li>
+                        <li>Run Memory Capsule with the <code>--use-local-llm</code> flag:
+                            <div class="code-block">
+                                <pre><code>python memory_capsule/run.py --use-local-llm --llm-model llama2</code></pre>
+                            </div>
+                        </li>
+                    </ol>
+                    
+                    <h2 id="configuration">Configuration</h2>
+                    <p>Memory Capsule can be configured through command-line arguments:</p>
+                    
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Option</th>
+                                    <th>Description</th>
+                                    <th>Default</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>--data-dir</code></td>
+                                    <td>Directory for storing data files</td>
+                                    <td><code>./data</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>--db-path</code></td>
+                                    <td>Path to database file</td>
+                                    <td><code>&lt;data_dir&gt;/conversations.db</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>--sample-rate</code></td>
+                                    <td>Audio sample rate in Hz</td>
+                                    <td><code>16000</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>--channels</code></td>
+                                    <td>Number of audio channels</td>
+                                    <td><code>1</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>--chunk-size</code></td>
+                                    <td>Audio chunk size in frames</td>
+                                    <td><code>1024</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>--whisper-model</code></td>
+                                    <td>Whisper model name (tiny, base, small, medium, large)</td>
+                                    <td><code>tiny</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>--device</code></td>
+                                    <td>Device to run models on (cpu, cuda)</td>
+                                    <td>auto-detect</td>
+                                </tr>
+                                <tr>
+                                    <td><code>--llm-model</code></td>
+                                    <td>Language model name</td>
+                                    <td><code>gpt-3.5-turbo</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>--use-local-llm</code></td>
+                                    <td>Use local LLM via Ollama instead of OpenAI API</td>
+                                    <td><code>false</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>--embedding-model</code></td>
+                                    <td>Embedding model name</td>
+                                    <td><code>all-MiniLM-L6-v2</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>--tts-voice</code></td>
+                                    <td>TTS voice ID</td>
+                                    <td>system default</td>
+                                </tr>
+                                <tr>
+                                    <td><code>--tts-rate</code></td>
+                                    <td>TTS speech rate in words per minute</td>
+                                    <td><code>150</code></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <h2 id="commands">Commands</h2>
+                    <p>Once Memory Capsule is running, you can use the following commands in the interactive interface:</p>
+                    
+                    <div class="table-responsive">
+                        <table class="table table-striped command-table">
+                            <thead>
+                                <tr>
+                                    <th>Command</th>
+                                    <th>Description</th>
+                                    <th>Example</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>start</code></td>
+                                    <td>Start the memory capsule recording and processing</td>
+                                    <td><code>start</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>stop</code></td>
+                                    <td>Stop the memory capsule</td>
+                                    <td><code>stop</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>pause</code></td>
+                                    <td>Pause audio recording and processing</td>
+                                    <td><code>pause</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>resume</code></td>
+                                    <td>Resume audio recording and processing</td>
+                                    <td><code>resume</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>ask</code></td>
+                                    <td>Ask a question to the assistant</td>
+                                    <td><code>ask What did we discuss yesterday?</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>search</code></td>
+                                    <td>Search memory for utterances</td>
+                                    <td><code>search project deadline</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>list</code></td>
+                                    <td>List recent conversations (default: 5)</td>
+                                    <td><code>list 10</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>view</code></td>
+                                    <td>View a conversation by ID</td>
+                                    <td><code>view 3</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>stats</code></td>
+                                    <td>Show database statistics</td>
+                                    <td><code>stats</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>help</code></td>
+                                    <td>Show help message for a command</td>
+                                    <td><code>help ask</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>exit</code> or <code>quit</code></td>
+                                    <td>Exit the program</td>
+                                    <td><code>exit</code></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <h2 id="usage-scenarios">Usage Scenarios</h2>
+                    
+                    <h3>Recording a Meeting</h3>
+                    <ol>
+                        <li>Start Memory Capsule: <code>python memory_capsule/run.py</code></li>
+                        <li>Start recording: <code>start</code></li>
+                        <li>Let it run during the meeting</li>
+                        <li>When the meeting is over: <code>stop</code></li>
+                        <li>View the transcribed conversation: <code>list</code> then <code>view &lt;id&gt;</code></li>
+                    </ol>
+                    
+                    <h3>Searching Past Conversations</h3>
+                    <ol>
+                        <li>Start Memory Capsule: <code>python memory_capsule/run.py</code></li>
+                        <li>Search for keywords: <code>search project timeline</code></li>
+                        <li>View the full conversation containing the search results: <code>view &lt;id&gt;</code></li>
+                    </ol>
+                    
+                    <h3>Asking Questions About Past Discussions</h3>
+                    <ol>
+                        <li>Start Memory Capsule: <code>python memory_capsule/run.py</code></li>
+                        <li>Ask a question: <code>ask What did we decide about the marketing budget?</code></li>
+                        <li>The assistant will search the memory and provide a contextual answer</li>
+                    </ol>
+                    
+                    <h2 id="api-reference">API Reference</h2>
+                    <p>Memory Capsule is built with a modular architecture. Here's an overview of the main components:</p>
+                    
+                    <h2 id="modules">Modules</h2>
+                    
+                    <h3>Audio Module</h3>
+                    <p>The <code>audio</code> module handles continuous audio capture from the microphone.</p>
+                    
+                    <h4>AudioRecorder Class</h4>
+                    <p>Main class for recording audio from the microphone.</p>
+                    
+                    <div class="code-block">
+                        <pre><code>from memory_capsule.audio.recorder import AudioRecorder
+
+# Create an audio recorder
+recorder = AudioRecorder(sample_rate=16000, channels=1, chunk_size=1024)
+
+# Start recording
+recorder.start()
+
+# Get audio chunk
+audio_chunk = recorder.get_audio()
+
+# Stop recording
+recorder.stop()</code></pre>
+                    </div>
+                    
+                    <h3>Transcription Module</h3>
+                    <p>The <code>transcription</code> module handles speech-to-text conversion using OpenAI's Whisper.</p>
+                    
+                    <h4>WhisperTranscriber Class</h4>
+                    <p>Main class for transcribing speech to text.</p>
+                    
+                    <div class="code-block">
+                        <pre><code>from memory_capsule.transcription.whisper_transcriber import WhisperTranscriber
+
+# Create a transcriber
+transcriber = WhisperTranscriber(model_name="tiny", device="cpu")
+
+# Transcribe audio
+result = transcriber.transcribe(audio_data)
+
+# Transcribe from file
+result = transcriber.transcribe_file("audio.wav")</code></pre>
+                    </div>
+                    
+                    <h3>Diarization Module</h3>
+                    <p>The <code>diarization</code> module handles speaker identification.</p>
+                    
+                    <h4>SpeakerDiarizer Class</h4>
+                    <p>Main class for identifying different speakers in audio.</p>
+                    
+                    <div class="code-block">
+                        <pre><code>from memory_capsule.diarization.speaker_diarizer import SpeakerDiarizer
+
+# Create a diarizer
+diarizer = SpeakerDiarizer(sample_rate=16000)
+
+# Diarize audio
+result = diarizer.diarize(audio_data)
+
+# Register a speaker
+diarizer.register_speaker("John", voice_sample)</code></pre>
+                    </div>
+                    
+                    <h3>Storage Module</h3>
+                    <p>The <code>storage</code> module handles conversation storage in a SQLite database.</p>
+                    
+                    <h4>ConversationDB Class</h4>
+                    <p>Main class for storing and retrieving conversations.</p>
+                    
+                    <div class="code-block">
+                        <pre><code>from memory_capsule.storage.conversation_db import ConversationDB
+
+# Create a database
+db = ConversationDB("conversations.db")
+db.connect()
+
+# Create a conversation
+conversation_id = db.create_conversation(title="Meeting")
+
+# Add an utterance
+utterance = {
+    'speaker': 'Speaker_A',
+    'text': 'Hello, this is a test.',
+    'start_time': 0.0,
+    'end_time': 2.0,
+    'timestamp': time.time()
+}
+db.add_utterance(utterance, conversation_id)
+
+# Search utterances
+results = db.search_utterances("test")
+
+# Disconnect
+db.disconnect()</code></pre>
+                    </div>
+                    
+                    <h3>Language Model Module</h3>
+                    <p>The <code>llm</code> module handles integration with language models.</p>
+                    
+                    <h4>LanguageModel Class</h4>
+                    <p>Main class for generating responses using language models.</p>
+                    
+                    <div class="code-block">
+                        <pre><code>from memory_capsule.llm.language_model import LanguageModel
+
+# Create a language model
+model = LanguageModel(model_name="gpt-3.5-turbo", use_local=False)
+
+# Generate a response
+response = model.generate_response("What is the capital of France?")
+
+# Chat conversation
+messages = [
+    {"role": "system", "content": "You are a helpful assistant."},
+    {"role": "user", "content": "Hello, who are you?"}
+]
+response = model.chat(messages)</code></pre>
+                    </div>
+                    
+                    <h3>Memory Search Module</h3>
+                    <p>The <code>memory</code> module handles searching for relevant information in past conversations.</p>
+                    
+                    <h4>MemorySearch Class</h4>
+                    <p>Main class for searching memory using keywords and vector embeddings.</p>
+                    
+                    <div class="code-block">
+                        <pre><code>from memory_capsule.memory.memory_search import MemorySearch
+
+# Create a memory search
+memory_search = MemorySearch(db, embedding_model="all-MiniLM-L6-v2")
+
+# Search by keyword
+results = memory_search.search_by_keyword("meeting")
+
+# Search by vector similarity
+results = memory_search.search_by_vector("project timeline")
+
+# Combined search
+results = memory_search.search_memory("budget discussion")
+
+# Get context for a query
+context = memory_search.get_context_for_query("What was decided about the marketing budget?")</code></pre>
+                    </div>
+                    
+                    <h2 id="tutorials">Tutorials</h2>
+                    
+                    <h3>Setting Up Memory Capsule in Spyder</h3>
+                    <ol>
+                        <li>Open Anaconda Navigator</li>
+                        <li>Create a new environment named "memory-capsule" with Python 3.10</li>
+                        <li>Open Spyder from the "memory-capsule" environment</li>
+                        <li>Open the <code>memory_capsule/run.py</code> file</li>
+                        <li>Run the script by clicking the green play button or pressing F5</li>
+                        <li>Interact with Memory Capsule through the console</li>
+                    </ol>
+                    
+                    <h3>Creating a Custom Configuration</h3>
+                    <p>You can create a custom configuration by setting command-line arguments:</p>
+                    
+                    <div class="code-block">
+                        <pre><code># In Spyder, set these in the run configuration
+# Run → Configuration per file → Command line options:
+--whisper-model base --sample-rate 44100 --tts-rate 180</code></pre>
+                    </div>
+                    
+                    <h3>Using Local LLM for Offline Operation</h3>
+                    <ol>
+                        <li>Install Ollama from <a href="https://ollama.ai/" target="_blank">https://ollama.ai/</a></li>
+                        <li>Pull a language model: <code>ollama pull llama2</code></li>
+                        <li>Run Memory Capsule with local LLM:
+                            <div class="code-block">
+                                <pre><code>python memory_capsule/run.py --use-local-llm --llm-model llama2</code></pre>
+                            </div>
+                        </li>
+                    </ol>
+                    
+                    <h2 id="troubleshooting">Troubleshooting</h2>
+                    
+                    <h3>Audio Issues</h3>
+                    <ul>
+                        <li><strong>Problem:</strong> No audio is being recorded
+                            <br><strong>Solution:</strong> Ensure your microphone is properly connected and set as the default input device in your system settings</li>
+                        <li><strong>Problem:</strong> Audio quality is poor
+                            <br><strong>Solution:</strong> Try increasing the sample rate with <code>--sample-rate 44100</code></li>
+                        <li><strong>Problem:</strong> USB microphone not detected
+                            <br><strong>Solution:</strong> Try a different USB port or restart your computer</li>
+                    </ul>
+                    
+                    <h3>Transcription Issues</h3>
+                    <ul>
+                        <li><strong>Problem:</strong> Transcription is inaccurate
+                            <br><strong>Solution:</strong> Try using a larger Whisper model: <code>--whisper-model base</code> or <code>--whisper-model small</code></li>
+                        <li><strong>Problem:</strong> Transcription is slow
+                            <br><strong>Solution:</strong> If you have a GPU, ensure it's being used with <code>--device cuda</code></li>
+                    </ul>
+                    
+                    <h3>LLM Issues</h3>
+                    <ul>
+                        <li><strong>Problem:</strong> OpenAI API errors
+                            <br><strong>Solution:</strong> Check that your API key is valid and has sufficient credits</li>
+                        <li><strong>Problem:</strong> Local LLM not working
+                            <br><strong>Solution:</strong> Ensure Ollama is running and the model is downloaded</li>
+                    </ul>
+                    
+                    <h2 id="faq">FAQ</h2>
+                    
+                    <h3>General Questions</h3>
+                    
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                    Is my data sent to the cloud?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <p>By default, Memory Capsule uses OpenAI's API for transcription and language model capabilities, which means audio and text data is sent to OpenAI's servers. However, you can use the local mode with <code>--use-local-llm</code> to keep all processing on your device.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                    How much disk space does Memory Capsule use?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <p>Memory Capsule stores only the transcribed text, not the raw audio. A typical conversation might use a few kilobytes of storage. The database will grow over time, but even years of conversations should only take up a few hundred megabytes.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                    Can I use Memory Capsule in languages other than English?
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <p>Yes, Whisper supports multiple languages for transcription. The language model capabilities will also work with other languages, though performance may vary depending on the model used.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                    How accurate is the speaker diarization?
+                                </button>
+                            </h2>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <p>Speaker diarization accuracy depends on several factors, including audio quality, number of speakers, and overlap. In good conditions with clear speech and minimal overlap, accuracy can be 80-90%. You can improve accuracy by registering known speakers with voice samples.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                                    Can I export my conversations?
+                                </button>
+                            </h2>
+                            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <p>Currently, you can view conversations through the command-line interface. A future update will add export capabilities to formats like TXT, JSON, and PDF.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>Memory Capsule</h3>
+                    <p>Your conversations, remembered forever.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <ul class="list-inline social-links">
+                        <li class="list-inline-item"><a href="#"><i class="bi bi-github"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="bi bi-twitter"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="bi bi-linkedin"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2025 Memory Capsule. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <ul class="list-inline">
+                        <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+                        <li class="list-inline-item"><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Capsule - Speaker/Microphone Memory System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Memory Capsule</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#how-it-works">How It Works</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#installation">Installation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#documentation">Documentation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="hero-section">
+        <div class="container text-center">
+            <h1 class="display-3 fw-bold text-white">Memory Capsule</h1>
+            <h2 class="text-white mb-4">Your Conversations, Remembered Forever</h2>
+            <p class="lead text-white mb-5">A powerful system that continuously listens, transcribes, and stores your conversations, allowing you to search and interact with your spoken memories.</p>
+            <div class="d-flex justify-content-center">
+                <a href="#installation" class="btn btn-primary btn-lg me-3">Get Started</a>
+                <a href="https://github.com/yourusername/memory-capsule" class="btn btn-outline-light btn-lg">View on GitHub</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section id="features" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Key Features</h2>
+                <p class="section-subtitle">Discover what makes Memory Capsule special</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="icon-wrapper">
+                            <i class="bi bi-mic-fill"></i>
+                        </div>
+                        <h3>Continuous Audio Capture</h3>
+                        <p>Seamlessly record ambient audio from your microphone, ensuring no conversation is missed.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="icon-wrapper">
+                            <i class="bi bi-translate"></i>
+                        </div>
+                        <h3>Speech Transcription</h3>
+                        <p>Convert spoken words to text in real-time using OpenAI's state-of-the-art Whisper model.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="icon-wrapper">
+                            <i class="bi bi-people-fill"></i>
+                        </div>
+                        <h3>Speaker Diarization</h3>
+                        <p>Automatically identify and distinguish between different speakers in the conversation.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="icon-wrapper">
+                            <i class="bi bi-database-fill"></i>
+                        </div>
+                        <h3>Persistent Storage</h3>
+                        <p>Store all conversations in a structured database for easy retrieval and searching.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="icon-wrapper">
+                            <i class="bi bi-search"></i>
+                        </div>
+                        <h3>Memory Search</h3>
+                        <p>Find specific moments using keyword search or semantic vector-based retrieval.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="icon-wrapper">
+                            <i class="bi bi-robot"></i>
+                        </div>
+                        <h3>AI Assistant</h3>
+                        <p>Interact with an AI that has context from your past conversations using RAG technology.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-subtitle">The technology behind Memory Capsule</p>
+            </div>
+            <div class="row align-items-center mb-5">
+                <div class="col-lg-6">
+                    <img src="images/audio-capture.svg" alt="Audio Capture" class="img-fluid rounded shadow-sm">
+                </div>
+                <div class="col-lg-6">
+                    <h3>1. Audio Capture</h3>
+                    <p>Memory Capsule continuously records audio from your microphone in small chunks. The audio is processed in real-time, ensuring privacy by keeping all data local to your device.</p>
+                    <p>Using the sounddevice library, we capture high-quality audio at 16kHz, optimized for speech recognition.</p>
+                </div>
+            </div>
+            <div class="row align-items-center mb-5 flex-lg-row-reverse">
+                <div class="col-lg-6">
+                    <img src="images/transcription.svg" alt="Transcription" class="img-fluid rounded shadow-sm">
+                </div>
+                <div class="col-lg-6">
+                    <h3>2. Speech Transcription</h3>
+                    <p>The captured audio is transcribed using OpenAI's Whisper, a state-of-the-art speech recognition model that's robust to accents, background noise, and technical language.</p>
+                    <p>We use the "tiny" model by default for speed, but you can choose larger models for increased accuracy.</p>
+                </div>
+            </div>
+            <div class="row align-items-center mb-5">
+                <div class="col-lg-6">
+                    <img src="images/diarization.svg" alt="Speaker Diarization" class="img-fluid rounded shadow-sm">
+                </div>
+                <div class="col-lg-6">
+                    <h3>3. Speaker Diarization</h3>
+                    <p>Memory Capsule identifies who said what using advanced speaker diarization technology. This allows the system to attribute each piece of transcribed text to the correct speaker.</p>
+                    <p>We use neural network models to create voice embeddings that can distinguish between different speakers even in overlapping speech.</p>
+                </div>
+            </div>
+            <div class="row align-items-center mb-5 flex-lg-row-reverse">
+                <div class="col-lg-6">
+                    <img src="images/storage.svg" alt="Storage" class="img-fluid rounded shadow-sm">
+                </div>
+                <div class="col-lg-6">
+                    <h3>4. Conversation Storage</h3>
+                    <p>All transcribed conversations are stored in a SQLite database with timestamps, speaker information, and other metadata. This creates a searchable archive of all your spoken interactions.</p>
+                    <p>The database is optimized for quick retrieval and can handle years of conversation history.</p>
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <img src="images/retrieval.svg" alt="Retrieval and AI" class="img-fluid rounded shadow-sm">
+                </div>
+                <div class="col-lg-6">
+                    <h3>5. Memory Search & AI Assistant</h3>
+                    <p>When you ask a question, Memory Capsule uses both keyword and semantic search to find relevant past conversations. These are fed into a language model using Retrieval-Augmented Generation (RAG).</p>
+                    <p>The AI assistant can then provide contextually aware responses based on your conversation history, speaking back to you using text-to-speech technology.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Installation Section -->
+    <section id="installation" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Installation</h2>
+                <p class="section-subtitle">Get up and running in minutes</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title">Prerequisites</h3>
+                            <ul class="mb-4">
+                                <li>Python 3.8 or higher</li>
+                                <li>Anaconda or Miniconda (recommended)</li>
+                                <li>Microphone for audio input</li>
+                                <li>Speakers for audio output</li>
+                            </ul>
+                            
+                            <h3 class="card-title">Installation Steps</h3>
+                            <div class="code-block">
+                                <pre><code># Clone the repository
+git clone https://github.com/yourusername/memory-capsule.git
+cd memory-capsule
+
+# Create a new Anaconda environment
+conda create -n memory-capsule python=3.10
+conda activate memory-capsule
+
+# Install the required dependencies
+pip install -r requirements.txt</code></pre>
+                            </div>
+                            
+                            <h3 class="card-title mt-4">Running Memory Capsule</h3>
+                            <div class="code-block">
+                                <pre><code># Run with default settings
+python memory_capsule/run.py
+
+# Or with custom options
+python memory_capsule/run.py --whisper-model base --use-local-llm</code></pre>
+                            </div>
+                            
+                            <div class="mt-4">
+                                <a href="documentation.html" class="btn btn-primary">View Full Documentation</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Documentation Section -->
+    <section id="documentation" class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Documentation</h2>
+                <p class="section-subtitle">Everything you need to know</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h3 class="card-title">User Guide</h3>
+                            <p class="card-text">Learn how to use Memory Capsule effectively, including all available commands and features.</p>
+                            <a href="documentation.html#user-guide" class="btn btn-outline-primary">Read User Guide</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h3 class="card-title">API Reference</h3>
+                            <p class="card-text">Detailed documentation of all modules, classes, and functions for developers.</p>
+                            <a href="documentation.html#api-reference" class="btn btn-outline-primary">View API Reference</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h3 class="card-title">Tutorials</h3>
+                            <p class="card-text">Step-by-step guides for common tasks and advanced usage scenarios.</p>
+                            <a href="documentation.html#tutorials" class="btn btn-outline-primary">Explore Tutorials</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section id="demo" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">See It In Action</h2>
+                <p class="section-subtitle">Watch Memory Capsule at work</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Memory Capsule Demo" allowfullscreen></iframe>
+                    </div>
+                    <div class="text-center mt-4">
+                        <a href="#installation" class="btn btn-primary btn-lg">Try It Yourself</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle">Questions, feedback, or contributions?</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Name</label>
+                                    <input type="text" class="form-control" id="name" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="message" class="form-label">Message</label>
+                                    <textarea class="form-control" id="message" rows="5" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>Memory Capsule</h3>
+                    <p>Your conversations, remembered forever.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <ul class="list-inline social-links">
+                        <li class="list-inline-item"><a href="#"><i class="bi bi-github"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="bi bi-twitter"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="bi bi-linkedin"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2025 Memory Capsule. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <ul class="list-inline">
+                        <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+                        <li class="list-inline-item"><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

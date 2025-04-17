@@ -1,0 +1,11 @@
+sounddevice>=0.4.5
+numpy>=1.20.0
+openai-whisper>=20231117
+diart>=0.9.2
+pyannote.audio>=2.1.1
+torch>=2.0.0
+torchaudio>=2.0.0
+faiss-cpu>=1.7.3
+sentence-transformers>=2.2.2
+pyttsx3>=2.90
+python-dotenv>=0.19.0
